@@ -1,12 +1,12 @@
 package cn.bmob.imdemo.ui;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -32,6 +32,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bmob.imdemo.R;
@@ -130,6 +135,32 @@ public class ChatActivity extends ParentWithNaviActivity implements MessageListH
         initSwipeLayout();
         initVoiceView();
         initBottomView();
+
+
+        verifyAudioPermissions(this);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode==GET_RECODE_AUDIO){
+            if (grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "授予录音权限成功", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, "授予录音权限失败", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    /*
+     * 申请录音权限*/
+    public static void verifyAudioPermissions(Activity activity) {
+        int permission = ActivityCompat.checkSelfPermission(activity,
+                Manifest.permission.RECORD_AUDIO);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, PERMISSION_AUDIO,
+                    GET_RECODE_AUDIO);
+        }
     }
 
     private void initSwipeLayout() {
@@ -274,6 +305,12 @@ public class ChatActivity extends ParentWithNaviActivity implements MessageListH
             }
         });
     }
+
+    //申请录音权限
+    private static final int GET_RECODE_AUDIO = 1;
+    private static String[] PERMISSION_AUDIO = {
+            Manifest.permission.RECORD_AUDIO
+    };
 
     /**
      * 长按说话
