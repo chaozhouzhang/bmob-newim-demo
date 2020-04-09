@@ -132,7 +132,8 @@ public class NewRecordPlayClickListener implements View.OnClickListener {
 				return;
 			}
 		}
-		if (message.getFromId().equals(currentObjectId)) {// 如果是自己发送的语音消息，则播放本地地址
+		if (message.getFromId().equals(currentObjectId)) {
+			// 如果是自己发送的语音消息，则播放本地地址
 			String localPath = message.getContent().split("&")[0];
 			startPlayRecord(localPath, true);
 		} else {// 如果是收到的消息，则需要先下载后播放
