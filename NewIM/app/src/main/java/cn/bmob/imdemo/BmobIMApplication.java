@@ -2,6 +2,7 @@ package cn.bmob.imdemo;
 
 import android.app.Application;
 
+import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
 import java.io.BufferedReader;
@@ -42,7 +43,7 @@ public class BmobIMApplication extends Application {
             BmobIM.init(this);
             BmobIM.registerDefaultMessageHandler(new DemoMessageHandler(this));
         }
-        Logger.init("BmobNewIMDemo");
+        Logger.addLogAdapter(new AndroidLogAdapter());
         UniversalImageLoader.initImageLoader(this);
     }
 

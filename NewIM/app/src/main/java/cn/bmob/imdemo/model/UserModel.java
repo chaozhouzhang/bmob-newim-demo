@@ -222,7 +222,7 @@ public class UserModel extends BaseModel {
                             BmobIM.getInstance().updateConversation(conversation);
                         }
                     } else {
-                        Logger.e(e);
+                        Logger.e(e.getMessage());
                     }
                     listener.done(null);
                 }

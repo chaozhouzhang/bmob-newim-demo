@@ -6,7 +6,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.0'
+        classpath 'com.android.tools.build:gradle:3.6.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,7 +17,7 @@ allprojects {
     repositories {
         jcenter()
         //TODO 集成：1.1、配置Bmob的maven仓库地址
-        maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
+        maven {url 'https://dl.bintray.com/chaozhouzhang/maven' }
         google()
     }
 }

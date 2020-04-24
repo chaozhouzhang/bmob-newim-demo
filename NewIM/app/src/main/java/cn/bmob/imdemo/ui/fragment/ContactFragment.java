@@ -239,7 +239,7 @@ public class ContactFragment extends ParentWithNaviFragment {
                             adapter.bindDatas(null);
                             adapter.notifyDataSetChanged();
                             sw_refresh.setRefreshing(false);
-                            Logger.e(e);
+                            Logger.e(e.getMessage());
                         }
                     }
                 }

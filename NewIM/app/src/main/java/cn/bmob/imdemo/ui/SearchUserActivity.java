@@ -1,9 +1,6 @@
 package cn.bmob.imdemo.ui;
 
 import android.os.Bundle;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +10,9 @@ import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bmob.imdemo.R;
@@ -107,7 +107,7 @@ public class SearchUserActivity extends ParentWithNaviActivity {
                             sw_refresh.setRefreshing(false);
                             adapter.setDatas(null);
                             adapter.notifyDataSetChanged();
-                            Logger.e(e);
+                            Logger.e(e.getMessage());
                         }
                     }
                 }

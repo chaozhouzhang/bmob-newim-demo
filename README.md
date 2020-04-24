@@ -22,6 +22,9 @@ IM SDK 使用Data SDK的BmobFile用于图片、语音等文件消息的发送，
 | bmob-im:2.0.9| bmob-sdk:3.5.6| 
 | bmob-im:2.1.0| bmob-sdk:3.5.6| 
 | bmob-im:2.1.1| bmob-sdk:3.6.3| 
+| bmob-im:2.1.4| bmob-sdk:3.7.3| 
+| bmob-im:2.1.5| bmob-sdk:3.7.8| 
+
 # 2、BmobNewIM SDK 集成
 ## 2.1、手动集成
 ### 2.1.1、下载Android BmobNewIM SDK开发包及其Demo
